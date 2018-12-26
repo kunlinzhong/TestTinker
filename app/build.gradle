@@ -19,10 +19,22 @@ android {
             }
         }
     }
+    signingConfigs {
+        comodinsigning {
+            keyAlias 'teacherApp'
+            keyPassword 'comodin'
+            storeFile file('src/edu.jks')
+            storePassword 'comodin'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.comodinsigning
+            minifyEnabled false
+            zipAlignEnabled false //Zipalign优化
+            shrinkResources false // 移除无用的resource文件
         }
     }
     externalNativeBuild {
@@ -40,4 +52,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.github.bumptech.glide:glide:4.5.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
 }
