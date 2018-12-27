@@ -8,12 +8,18 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_second.*
 
 class SecondActivity : AppCompatActivity(),View.OnClickListener {
+    var clickFlag = true
     override fun onClick(v: View?) {
     when (v?.id){
         R.id.imageView ->{
-            Log.e("load gif","gif");
+            Log.e("load gif","gif--->"+clickFlag);
 //            Glide.with(this).load("https://upload-images.jianshu.io/upload_images/5885602-edb0d53965efd964.gif").into(imageView);
-            Glide.with(this).load(R.drawable.ic_gif).into(imageView);
+           if (clickFlag){
+               Glide.with(this).load(R.drawable.ic_gif).into(imageView);
+           }else{
+               Glide.with(this).load(R.drawable.ic_gif_2).into(imageView);
+           }
+            clickFlag = !clickFlag
         }
     }
     }
