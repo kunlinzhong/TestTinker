@@ -1,31 +1,24 @@
 package me.com.testtinker
 
 import android.content.Context
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
-import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
-import com.bumptech.glide.gifdecoder.GifDecoder
 import com.bumptech.glide.load.resource.gif.GifDrawable
 import kotlinx.android.synthetic.main.activity_second.*
 import me.com.t.SPLASH_WHAT
-import me.com.testtinker.R.id.imageView
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import android.media.AudioRecord.MetricsConstants.SOURCE
 import android.widget.ImageView
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.tinkerpatch.sdk.server.utils.c.t
 import me.com.t.StrUtil
 import java.lang.reflect.InvocationTargetException
-
+import me.com.baselibrary.AutoTouch
 
 class SecondActivity : AppCompatActivity(),View.OnClickListener {
     override fun onClick(v: View?) {
@@ -84,6 +77,9 @@ class SecondActivity : AppCompatActivity(),View.OnClickListener {
     fun initView(){
         imageView.setOnClickListener(this)
         Glide.with(this@SecondActivity).load(R.drawable.ic_gif).into(imageView);
+//        val autoTouch = AutoTouch()
+//        autoTouch.autoClickPos(0.0, 0.0, 500.0, 500.0)
+//        StrUtil.testInt(1,"--->")
     }
 
     override fun onDestroy() {
@@ -139,8 +135,6 @@ class SecondActivity : AppCompatActivity(),View.OnClickListener {
                 } catch (e: ClassNotFoundException) {
                     e.printStackTrace()
                 } catch (e: IllegalAccessException) {
-                    e.printStackTrace()
-                } catch (e: NoSuchMethodException) {
                     e.printStackTrace()
                 } catch (e: InvocationTargetException) {
                     e.printStackTrace()

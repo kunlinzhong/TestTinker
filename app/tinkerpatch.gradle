@@ -23,21 +23,19 @@ tinkerpatchSupport {
      * 如果只在某个渠道使用了加固，可使用多flavors配置
      **/
     protectedApp = false
-
     autoBackupApkPath = "${bakPath}"
-
     appKey = "178efbb72f86c82c"
-
     /** 注意: 若发布新的全量包, appVersion一定要更新 **/
-    appVersion = "3.0.1"
+    appVersion = "5.0.2"
 
     def pathPrefix = "${bakPath}/${baseInfo}/${variantName}/"
     def name = "${project.name}-${variantName}"
 
 //    baseApkFile = "${pathPrefix}/${name}.apk"
-    baseApkFile = "${bakPath}/${name}.apk"
+//    baseApkFile = "${bakPath}/${name}.apk"
+    baseApkFile = "${bakPath}/${baseInfo}.apk"
 //    baseProguardMappingFile ="${bakPath}/${name}-mapping.txt"
-//    baseResourceRFile = "${bakPath}/${name}-R.txt"
+    baseResourceRFile = "${bakPath}/${baseInfo}-R.txt"
 //    baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
 //    baseResourceRFile = "${pathPrefix}/${name}-R.txt"
 

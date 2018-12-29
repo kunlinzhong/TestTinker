@@ -3,7 +3,6 @@ package me.com.testtinker
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.tencent.tinker.lib.util.TinkerLog
@@ -16,7 +15,7 @@ import me.com.t.StrUtil
 import me.com.t.StrUtil.msgFormat
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    val TAG = "MainActivity-->3.0.8patch"
+    val TAG = "MainActivity-->5.0.2patch"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,12 +23,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 //        Log.e(TAG, "update patch success");
         // Example of a call to a native method
         sample_text.text = stringFromJNI()
-
         initView()
-//        Toast.makeText(this, "update patch success", Toast.LENGTH_SHORT).show()
     }
-
-
     fun initView() {
         btn1.setOnClickListener(this)
         requestConfig.setOnClickListener(this)
@@ -42,22 +37,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.btn1 -> {
                 TinkerPatch.with().fetchPatchUpdate(true)
-//                Log.e(TAG, "click btn1");
                 LogUtils.e(TAG, "click btn1")
                 Toast.makeText(this, "click btn1---->", Toast.LENGTH_SHORT).show()
-//                val intent = Intent()
-//                intent.setClass(this, SecondActivity::class.java)
-//                startActivity(intent)
             }
             R.id.requestConfig -> {
-//                Log.e(TAG, "request config");
                 LogUtils.e(TAG, "request config")
                 Toast.makeText(this, "onclick requestConfig--->", Toast.LENGTH_SHORT).show()
                 TinkerPatch.with().fetchDynamicConfig(object : ConfigRequestCallback {
                     override fun onSuccess(configs: HashMap<String, String>) {
                         TinkerLog.w(TAG, "request config success, config:" + configs)
                     }
-
                     override fun onFail(e: Exception) {
                         TinkerLog.w(TAG, "request config failed, exception:" + e)
                     }
@@ -77,6 +66,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.getStr->{
+                LogUtils.e(TAG, "get str")
                 val ss = StrUtil.msgFormat()
                 getStr.setText(ss)
             }
