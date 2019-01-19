@@ -1,0 +1,10 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    implementation files('libs/java-client-7.0.0.jar')
+//    implementation files('libs/selenium-server-standalone-3.141.59.jar')
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

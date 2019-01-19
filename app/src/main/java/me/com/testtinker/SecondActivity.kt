@@ -2,7 +2,7 @@ package me.com.testtinker
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.BitmapFactory
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -20,26 +20,34 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import java.lang.reflect.InvocationTargetException
 import android.widget.Toast
-import com.tinkerpatch.sdk.server.utils.c.r
-import android.graphics.Bitmap
-
-
-
+import com.bumptech.glide.GlideBuilder
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import me.com.baselibrary.LogUtils
+import me.com.t.GlideBlurformation
 
 class SecondActivity : AppCompatActivity(),View.OnClickListener {
     override fun onClick(v: View?) {
     when (v?.id){
         R.id.pngLinearlayout ->{
 //            Glide.with(this).load("https://upload-images.jianshu.io/upload_images/5885602-edb0d53965efd964.gif").into(imageView);
-            svgImageView.setImageResource(R.drawable.ic_home_unselect)
+//            svgImageView.setImageResource(R.drawable.ic_home_unselect)
+            Glide.with(this).load(R.drawable.ic_home_unselect).into(svgImageView);
             loadOneTimeGif(this,R.drawable.ic_home_active,imageView,pngGifListener);
-
-//            Glide.with(this).load(R.drawable.ic_gif_2).into(imageView);
-//            startSplashThread()
         }
         R.id.svgLinearlayout->{
-            imageView.setImageResource(R.mipmap.ic_home_unselect)
+//            imageView.setImageResource(R.mipmap.ic_home_unselect)
+            Glide.with(this).load(R.mipmap.ic_home_unselect).into(imageView);
             loadSvgOneTimeGif(this,R.drawable.ic_home_active,svgImageView,svgGifListener);
+        }
+        R.id.testGlideImageView->{
+            val option = RequestOptions().circleCrop()
+            Glide.with(this@SecondActivity).load(R.mipmap.asd).apply(RequestOptions.bitmapTransform( GlideBlurformation(this@SecondActivity))).into(testGlideImageView)
+        }
+        R.id.btn2->{
+            val intent = Intent()
+            intent.setClass(this@SecondActivity,TestGifActivity::class.java)
+            startActivity(intent)
         }
     }
     }
@@ -48,14 +56,16 @@ class SecondActivity : AppCompatActivity(),View.OnClickListener {
         @SuppressLint("ResourceType")
         override fun gifPlayComplete() {
             Toast.makeText(this@SecondActivity,"pngImageView-->",Toast.LENGTH_SHORT).show()
-            imageView.setImageResource(R.mipmap.ic_home_select)
+//            imageView.setImageResource(R.mipmap.ic_home_select)
+            Glide.with(this@SecondActivity).load(R.mipmap.ic_home_select).into(imageView);
         }
     }
 
     val svgGifListener = object : GifListener {
         @SuppressLint("ResourceType")
         override fun gifPlayComplete() {
-            svgImageView.setImageResource(R.drawable.ic_home_select)
+            Glide.with(this@SecondActivity).load(R.drawable.ic_home_select).into(svgImageView);
+//            svgImageView.setImageResource(R.drawable.ic_home_select)
         }
     }
     fun startSplashThread(){
@@ -100,6 +110,10 @@ class SecondActivity : AppCompatActivity(),View.OnClickListener {
     fun initView(){
         pngLinearlayout.setOnClickListener(this)
         svgLinearlayout.setOnClickListener(this)
+        testGlideImageView.setOnClickListener(this)
+        btn2.setOnClickListener(this)
+        val option = RequestOptions().circleCrop()
+        Glide.with(this@SecondActivity).load(R.mipmap.asd).apply(option).into(testGlideImageView)
 //        val autoTouch = AutoTouch()
 //        autoTouch.autoClickPos(0.0, 0.0, 500.0, 500.0)
 //        StrUtil.testInt(1,"--->")
@@ -111,6 +125,8 @@ class SecondActivity : AppCompatActivity(),View.OnClickListener {
     }
     companion object {
         fun loadOneTimeGif(context: Context, model: Any, mImageView: ImageView, gifListener: GifListener?) {
+//            val options = RequestOptions()
+//            options.diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             Glide.with(context).asGif().load(model).listener(object : RequestListener<GifDrawable> {
                 override fun onLoadFailed(
                     e: GlideException?,
@@ -118,6 +134,7 @@ class SecondActivity : AppCompatActivity(),View.OnClickListener {
                     target: Target<GifDrawable>,
                     isFirstResource: Boolean
                 ): Boolean {
+                    LogUtils.e("onLoadFailed","png");
                     return false
                 }
 
@@ -175,6 +192,7 @@ class SecondActivity : AppCompatActivity(),View.OnClickListener {
                     target: Target<GifDrawable>,
                     isFirstResource: Boolean
                 ): Boolean {
+                    LogUtils.e("onLoadFailed","svg");
                     return false
                 }
 

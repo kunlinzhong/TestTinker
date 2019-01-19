@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".TestGifActivity"
+        android:orientation="vertical">
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+        <LinearLayout
+                android:id="@+id/pickupLinearlayout"
+                style="@style/linearlayoutStyle">
+            <ImageView
+                    android:id="@+id/pickupImageView"
+                    style="@style/imageViewStyle"
+                    android:src="@drawable/ic_pickup_unselect"/>
+            <TextView
+                    android:id="@+id/pickupTextView"
+                    style="@style/textViewStyle"
+                    android:text="取件"/>
+        </LinearLayout>
+        <View style="@style/viewStyle"/>
+        <LinearLayout
+                android:id="@+id/shippingLinearlayout"
+                style="@style/linearlayoutStyle">
+            <ImageView
+                    android:id="@+id/shippingImageView"
+                    style="@style/imageViewStyle"
+                    android:src="@drawable/ic_shipping_unselect"/>
+            <TextView
+                    android:id="@+id/shippingTextView"
+                    style="@style/textViewStyle"
+                    android:text="寄件"/>
+        </LinearLayout>
+        <View style="@style/viewStyle"/>
+        <LinearLayout
+                android:id="@+id/stationLinearlayout"
+                style="@style/linearlayoutStyle">
+            <ImageView
+                    android:id="@+id/stationImageView"
+                    style="@style/imageViewStyle"
+                    android:src="@drawable/ic_station_unselect"/>
+            <TextView
+                    android:id="@+id/stationTextView"
+                    style="@style/textViewStyle"
+                    android:text="驿站"/>
+        </LinearLayout>
+        <View style="@style/viewStyle"/>
+        <LinearLayout
+                android:id="@+id/meLinearlayout"
+                style="@style/linearlayoutStyle">
+            <ImageView
+                    android:id="@+id/meImageView"
+                    style="@style/imageViewStyle"
+                    android:src="@drawable/ic_me_unselect"/>
+            <TextView
+                    android:id="@+id/meTextView"
+                    style="@style/textViewStyle"
+                    android:text="我的"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

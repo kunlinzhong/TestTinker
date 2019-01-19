@@ -14,8 +14,11 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_home_unselect" />
-                            <entry key="sourceFile" value="G:\设计\动画icon\svg\ic_home_unselect.svg" />
+                            <entry key="height" value="60" />
+                            <entry key="outputName" value="ic_me_unselect" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="G:\gif\05我的\ic_me_unselect.svg" />
+                            <entry key="width" value="60" />
                           </map>
                         </option>
                       </PersistentState>

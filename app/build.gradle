@@ -30,9 +30,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.comodinsigning
+            debuggable true
             minifyEnabled false
             zipAlignEnabled false //Zipalign优化
             shrinkResources false // 移除无用的resource文件
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
         }
     }
     externalNativeBuild {
@@ -64,4 +69,3 @@ configurations.all {
     ////每隔24小时检查远程依赖是否存在更新
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
-
