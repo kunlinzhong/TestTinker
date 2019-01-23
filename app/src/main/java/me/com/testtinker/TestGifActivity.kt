@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.umeng.analytics.MobclickAgent
 import kotlinx.android.synthetic.main.activity_test_gif.*
 import me.com.t.GifUtil
 
@@ -97,5 +98,15 @@ class TestGifActivity : AppCompatActivity(),View.OnClickListener,GifUtil.GifList
                 Glide.with(this@TestGifActivity).load(R.drawable.ic_me_unselect).into(meImageView)
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        MobclickAgent.onResume(this);
+    }
+
+    override fun onPause() {
+        super.onPause()
+        MobclickAgent.onPause(this);
     }
 }

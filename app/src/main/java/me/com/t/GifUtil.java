@@ -1,7 +1,6 @@
 package me.com.t;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -11,10 +10,10 @@ import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
 
 public class GifUtil {
     public static void loadOneTimeGif(Context context, Object model, final ImageView imageView, final GifListener gifListener) {

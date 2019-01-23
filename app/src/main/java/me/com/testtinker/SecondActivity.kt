@@ -23,6 +23,7 @@ import android.widget.Toast
 import com.bumptech.glide.GlideBuilder
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.umeng.analytics.MobclickAgent
 import me.com.baselibrary.LogUtils
 import me.com.t.GlideBlurformation
 
@@ -105,6 +106,7 @@ class SecondActivity : AppCompatActivity(),View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         initView()
+        Toast.makeText(this@SecondActivity,"add umeng",Toast.LENGTH_SHORT).show()
     }
 
     fun initView(){
@@ -248,5 +250,15 @@ class SecondActivity : AppCompatActivity(),View.OnClickListener {
      */
     interface GifListener {
         fun gifPlayComplete()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        MobclickAgent.onResume(this);
+    }
+
+    override fun onPause() {
+        super.onPause()
+        MobclickAgent.onPause(this);
     }
 }

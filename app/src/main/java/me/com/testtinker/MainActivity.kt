@@ -3,16 +3,19 @@ package me.com.testtinker
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.telephony.TelephonyManager
 import android.view.View
 import android.widget.Toast
 import com.tencent.tinker.lib.util.TinkerLog
 import com.tencent.tinker.loader.shareutil.ShareTinkerInternals
 import com.tinkerpatch.sdk.TinkerPatch
 import com.tinkerpatch.sdk.server.callback.ConfigRequestCallback
+import com.umeng.analytics.MobclickAgent
 import kotlinx.android.synthetic.main.activity_main.*
 import me.com.baselibrary.LogUtils
 import me.com.t.StrUtil
 import me.com.t.StrUtil.msgFormat
+import me.com.t.UMengUtil
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     val TAG = "MainActivity-->5.0.2patch"
@@ -20,10 +23,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        Log.e(TAG, "update patch success");
+        // Log.e(TAG, "update patch success");
         // Example of a call to a native method
         sample_text.text = stringFromJNI()
         initView()
+        UMengUtil.getTestDeviceInfo(this@MainActivity)
     }
     fun initView() {
         btn1.setOnClickListener(this)
@@ -85,5 +89,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         init {
             System.loadLibrary("native-lib")
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+//        MobclickAgent.onPageStart("SplashScreen");
+        MobclickAgent.onResume(this);
+    }
+
+    override fun onPause() {
+        super.onPause()
+//        MobclickAgent.onPageEnd("SplashScreen")
+        MobclickAgent.onPause(this);
     }
 }
