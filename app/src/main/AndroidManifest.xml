@@ -12,7 +12,7 @@
 
     <meta-data
             android:name="TINKER_ID"
-            android:value="4.0.2"/>
+            android:value="5.2.0"/>
 
     <!--<meta-data android:value="5c46bee4b465f53519000086" android:name="UMENG_APPKEY"/>-->
     <!--<meta-data android:value="Comodin" android:name="UMENG_CHANNEL"/>-->

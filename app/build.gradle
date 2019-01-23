@@ -8,8 +8,8 @@ android {
         applicationId "me.com.testtinker"
         minSdkVersion 14
         targetSdkVersion 28
-        versionCode 51
-        versionName "5.1.1"
+        versionCode 52
+        versionName "5.2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
